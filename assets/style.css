@@ -1,0 +1,797 @@
+:root {
+    --main-color:#1887EE;
+    --bg-100:#ffffff;
+}
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.full-width-section {
+    position: relative;
+    width: 100%;
+    height: 45vh;
+    background-image: url('images/about/head-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+.full-width-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Filter */
+}
+.full-width-section h1 {
+    position: relative;
+    z-index: 1;
+    font-size: 3em;
+    color: var(--bg-100);
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+.blue-text {
+    color: var(--main-color);
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+body{
+    overflow-x: hidden;
+}
+
+/* 
+---------------------------
+        navbar 
+---------------------------
+*/
+
+nav{
+    position: relative;
+    height: 12vh;
+    width: 100vw;
+    background-color: #13141882;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    z-index: 10;
+}
+
+/*Styling logo*/
+.logo{
+    margin: auto;
+    text-align: center;
+}
+.logo img {
+    height: 4rem;
+    width: 4rem;
+}
+
+/*Styling Links*/
+.nav-links{
+    display: flex;
+    list-style: none; 
+    width: 88vw;
+    padding: 0 10px;
+    justify-content: space-evenly;
+    align-items: center;
+    text-transform: uppercase;
+}
+.nav-links li a{
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 0.7vw;
+}
+.nav-links li a:hover {
+    color: var(--main-color);
+}
+.nav-links li {
+    position: relative;
+}
+
+
+/*Styling Buttons*/
+.join-button{
+    color: white;
+    background-color: var(--main-color);
+    border: 1.5px solid var(--main-color);
+    border-radius: 4px;
+    padding: 10px 26px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.join-button:hover {
+    color: #f2f5f7;
+    background-color: transparent;
+    border:1.5px solid #f2f5f7;
+    transition: all ease-in-out 350ms;
+}
+
+/*Styling Hamburger Icon*/
+.hamburger div{
+    width: 30px;
+    height:3px;
+    background: #f2f5f7;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+.hamburger{
+    display: none;
+}
+
+/*Stying for small screens*/
+@media screen and (max-width: 800px){
+    nav{
+        position: fixed;
+        z-index: 3;
+    }
+    .hamburger{
+        display:block;
+        position: absolute;
+        cursor: pointer;
+        right: 5%;
+        top: 50%;
+        transform: translate(-5%, -50%);
+        z-index: 7;
+        transition: all 0.7s ease;
+    }
+    .nav-links{
+        z-index: 5;
+        position: fixed;
+        background: #131418dc;
+        height: 100vh;
+        width: 100%;
+        flex-direction: column;
+        clip-path: circle(50px at 90% -20%);
+        -webkit-clip-path: circle(50px at 90% -10%);
+        transition: all 1s ease-out;
+        pointer-events: none;
+    }
+    .nav-links.open{
+        clip-path: circle(1000px at 90% -10%);
+        -webkit-clip-path: circle(1000px at 90% -10%);
+        pointer-events: all;
+    }
+    .nav-links li{
+        opacity: 0;
+    }
+    .nav-links li:nth-child(1){
+        transition: all 0.5s ease 0.2s;
+    }
+    .nav-links li:nth-child(2){
+        transition: all 0.5s ease 0.4s;
+    }
+    .nav-links li:nth-child(3){
+        transition: all 0.5s ease 0.6s;
+    }
+    .nav-links li:nth-child(4){
+        transition: all 0.5s ease 0.7s;
+    }
+    .nav-links li:nth-child(5){
+        transition: all 0.5s ease 0.8s;
+    }
+    .nav-links li:nth-child(6){
+        transition: all 0.5s ease 0.9s;
+        margin: 0;
+    }
+    .nav-links li:nth-child(7){
+        transition: all 0.5s ease 1s;
+        margin: 0;
+    }
+    li.fade{
+        opacity: 1;
+    }
+}
+/*Animating Hamburger Icon on Click*/
+.toggle .line1{
+    transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2{
+    transition: all 0.7s ease;
+    width:0;
+}
+.toggle .line3{
+    transform: rotate(45deg) translate(-5px,-6px);
+}
+
+
+
+/* 
+---------------------------
+        hero section
+---------------------------
+*/
+
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.hero img.active {
+    opacity: 1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-text {
+    position: absolute;
+    top: 35%;
+    left: 15%;
+    color: #fff;
+    text-align: left;
+    z-index: 2;
+}
+
+.hero-text h1 {
+    font-size: 6em;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2em;
+    }
+}
+
+
+
+/* 
+---------------------------
+        partner section
+---------------------------
+*/
+
+.partner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 18vh;
+    background-color: #f9f9f9;
+    overflow: hidden;
+}
+
+.logo-container {
+    display: flex;
+    animation: moveLogos 10s linear infinite;
+}
+
+.partner-logo {
+    width: 75px;
+    height: auto;
+    margin: 0 20px;
+}
+
+@keyframes moveLogos {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* 
+---------------------------
+        about us section
+---------------------------
+*/
+
+.about {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.about h2 {
+    font-size: 3.6em;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.image-items {
+    position: relative;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.image-items img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.image-items .hover-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2.6em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-items:hover img {
+    filter: brightness(50%);
+    transform: scale(1.1);
+}
+
+.image-items:hover .hover-text {
+    opacity: 1;
+}
+
+.image-items:hover {
+    transform: scale(1.05);
+}
+
+
+.explore-btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: var(--main-color);
+    border:1.5px solid var(--main-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.explore-btn:hover {
+    color: var(--main-color);
+    background-color: transparent;
+    border:1.5px solid var(--main-color);
+    transition: all ease-in-out 350ms;
+}
+
+/* 
+---------------------------
+        our story section (video) 
+---------------------------
+*/
+
+.our-story {
+    position: relative;
+    height: 75vh;
+    width: 100%;
+    margin: 50px auto;
+}
+.fullscreen-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+}
+
+/* 
+---------------------------
+        activities section
+---------------------------
+*/
+
+.activities {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+}
+
+.activities h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.activities p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.image-item {
+    position: relative;
+    overflow: hidden;
+    width: 300px;
+    height: 400px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.image-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(24, 135, 2380, 0.5), rgba(255, 255, 255, 0.0));
+    display: flex;
+    justify-content: left;
+    align-items: flex-end;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-item .overlay .text {
+    color: white;
+    text-align: left;
+    margin-left: 40px;
+    margin-bottom: 30PX;
+}
+.image-item .overlay .text h3 {
+    font-size: 2.4rem;
+}
+.image-item .overlay .explore-link {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+}
+
+.image-item:hover img {
+    transform: scale(1.1);
+}
+
+.image-item:hover .overlay {
+    opacity: 1;
+}
+@media (max-width: 768px) {
+    .image-item {
+        width: 100%;
+    }
+}
+
+/* 
+---------------------------
+        peaceCamp section 
+---------------------------
+*/
+
+.PeaceCamp {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.PeaceCamp h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.PeaceCamp p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+.image-card {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.image-card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(24, 135, 2380, 1), rgba(255, 255, 255, 0.0));
+    display: flex;
+    justify-content: left;
+    align-items: flex-end;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-card .overlay .text {
+    color: white;
+    text-align: left;
+    margin-left: 40px;
+    margin-bottom: 60px;
+}
+
+.image-card .overlay .explore-link {
+    display: inline-block;
+    font-size: 1.4rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+}
+
+.image-card:hover img {
+    transform: scale(1.1);
+}
+
+.image-card:hover .overlay {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .image-card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .PeaceCamp h2 {
+        font-size: 2em;
+    }
+
+    .PeaceCamp p {
+        font-size: 1em;
+    }
+}
+
+/* 
+---------------------------
+        become volunteer
+---------------------------
+*/
+
+.become-volunteer {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.image-volunteer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: width 0.5s ease;
+}
+
+.image-volunteer img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: width 0.5s ease;
+}
+
+.image-volunteer .overlay-volunteer {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    background-color: var(--main-color);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.5s ease, left 0.5s ease;
+}
+
+.image-volunteer:hover img {
+    width: 50%;
+}
+
+.image-volunteer:hover .overlay-volunteer {
+    opacity: 1;
+    left: 50%;
+}
+
+.overlay-volunteer .content-volunteer {
+    max-width: 400px;
+    padding: 20px;
+    line-height: 1.4rem;
+    text-align: left;
+    text-align: justify;
+}
+
+.overlay-volunteer .volunteer-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    border:1px solid #f0f0f0 ;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all ease-in-out 350ms;
+}
+.overlay-volunteer .volunteer-button:hover {
+    color: var(--main-color);
+    background-color: #f0f0f0;
+    transition: all ease-in-out 350ms;
+}
+@media (max-width: 768px) {
+    .become-volunteer {
+        height: 50vh;
+    }
+
+    .image-container:hover img {
+        width: 100%;
+    }
+
+    .image-container .overlay {
+        width: 100%;
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+        left: 0;
+    }
+}
+
+/* 
+---------------------------
+        footer 
+---------------------------
+*/
+
+footer {
+    padding: 100px 0 50px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.footer-logo img {
+    max-width: 4rem;
+    margin-bottom: 10px;
+}
+
+.footer-logo h2 {
+    margin: 10PX auto;
+}
+.footer-logo p {
+    max-width: 100px;
+}
+.footer-links {
+    text-align: center;
+}
+.footer-links h4, .footer-social h4 {
+    margin-bottom: 10px;
+}
+
+.footer-links ul {
+    list-style: none;
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-links ul li {
+    margin-bottom: 5px;
+    padding: 10px ;
+}
+
+.footer-links ul li a {
+    color: #131418;
+    text-decoration: none;
+}
+
+.footer-social a {
+    color: #131418;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.footer-social a ion-icon {
+    font-size: 30px;
+    transition: all 350MS ease-in-out;
+}
+.footer-social a ion-icon:hover{
+    color:var(--main-color);
+}
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo, .footer-links, .footer-social {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+}
